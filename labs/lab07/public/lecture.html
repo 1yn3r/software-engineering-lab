@@ -1,0 +1,41 @@
+<h1>Làm bài</h1>
+<form id="quizForm"></form>
+<button onclick="submitQuiz()">Nộp bài</button>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const lectureId = urlParams.get("id");
+
+async function loadQuestions() {
+  const res = await fetch(`/api/lectures/${lectureId}/questions`);
+  const questions = await res.json();
+  const form = document.getElementById("quizForm");
+  form.innerHTML = "";
+  questions.forEach((q, i) => {
+    form.innerHTML += `
+      <div>
+        <p>${i+1}. ${q.content}</p>
+        <label><input type="radio" name="q${q.question_id}" value="A"> ${q.answer_a}</label><br>
+        <label><input type="radio" name="q${q.question_id}" value="B"> ${q.answer_b}</label><br>
+        <label><input type="radio" name="q${q.question_id}" value="C"> ${q.answer_c}</label><br>
+        <label><input type="radio" name="q${q.question_id}" value="D"> ${q.answer_d}</label>
+      </div>
+    `;
+  });
+}
+
+async function submitQuiz() {
+  const res = await fetch(`/api/lectures/${lectureId}/questions`);
+  const questions = await res.json();
+
+  let correct = 0;
+  questions.forEach(q => {
+    const answer = document.querySelector(`input[name="q${q.question_id}"]:checked`);
+    if (answer && answer.value === q.correct_answer) correct++;
+  });
+
+  alert(`Bạn trả lời đúng ${correct}/${questions.length} câu`);
+}
+
+loadQuestions();
+</script>

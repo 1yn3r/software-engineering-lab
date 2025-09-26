@@ -1,0 +1,93 @@
+<!-- <h1>Dashboard</h1>
+<input type="text" id="lectureCode" placeholder="Nhập mã Lecture">
+<button onclick="addLecture()">Thêm Lecture</button>
+
+<ul id="myLectures"></ul>
+
+<script>
+async function loadLectures() {
+  const res = await fetch("/api/lectures/my", {
+    credentials: "include"
+  });
+  const data = await res.json();
+  const list = document.getElementById("myLectures");
+  list.innerHTML = "";
+  data.forEach(l => {
+    const li = document.createElement("li");
+    li.textContent = `${l.code} - ${l.title}`;
+    li.onclick = () => window.location = `lecture.html?id=${l.lecture_id}`;
+    list.appendChild(li);
+  });
+}
+async function addLecture() {
+  const code = document.getElementById("lectureCode").value;
+  await fetch("/api/lectures/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code })
+  });
+  loadLectures();
+}
+loadLectures();
+</script> -->
+
+<link rel="stylesheet" href="./dashboard.css">
+
+<div class="dashboard-container">
+  <!-- Sidebar trái -->
+  <aside class="sidebar">
+    <div class="student-info">
+      <h2 id="studentName">Tên sinh viên</h2>
+      <p id="studentUsername">@username</p>
+    </div>
+  </aside>
+
+  <!-- Main content bên phải -->
+  <main class="main-content">
+    <div class="search-bar">
+      <input type="text" id="lectureCode" placeholder="Nhập mã Lecture">
+      <button onclick="addLecture()">Thêm Lecture</button>
+    </div>
+
+    <div class="lecture-list">
+      <h1>Danh sách bài học</h1>
+      <ul id="myLectures"></ul>
+    </div>
+  </main>
+</div>
+
+<script>
+async function loadLectures() {
+  const res = await fetch("/api/lectures/my", {
+    credentials: "include"
+  });
+  const data = await res.json();
+  const list = document.getElementById("myLectures");
+  list.innerHTML = "";
+  data.forEach(l => {
+    const li = document.createElement("li");
+    li.textContent = `${l.code} - ${l.title}`;
+    li.onclick = () => window.location = `lecture.html?id=${l.lecture_id}`;
+    list.appendChild(li);
+  });
+}
+async function addLecture() {
+  const code = document.getElementById("lectureCode").value;
+  await fetch("/api/lectures/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code })
+  });
+  loadLectures();
+}
+async function loadUser() {
+  const res = await fetch("/api/lectures/me", { credentials: "include" });
+  if (res.ok) {
+    const data = await res.json();
+    document.getElementById("studentName").textContent = data.fullname;
+    document.getElementById("studentUsername").textContent = data.username;
+  }
+}
+loadUser();
+loadLectures();
+</script>
