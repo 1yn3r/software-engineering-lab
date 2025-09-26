@@ -37,8 +37,8 @@ loadLectures();
   <!-- Sidebar trái -->
   <aside class="sidebar">
     <div class="student-info">
-      <h2 id="studentName">Tên sinh viên</h2>
-      <p id="studentUsername">@username</p>
+      <h2 id="studentName"></h2>
+      <p id="studentUsername"></p>
     </div>
   </aside>
 
@@ -50,7 +50,7 @@ loadLectures();
     </div>
 
     <div class="lecture-list">
-      <h1>Danh sách bài học</h1>
+      <h1>Danh sách các môn đã đăng ký</h1>
       <ul id="myLectures"></ul>
     </div>
   </main>
@@ -85,7 +85,19 @@ async function loadUser() {
   if (res.ok) {
     const data = await res.json();
     document.getElementById("studentName").textContent = data.fullname;
-    document.getElementById("studentUsername").textContent = data.username;
+    
+    const username = data.username;
+    const spanElements = username.split('').map(char => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        return span;
+    });
+    const studentUsernameElement = document.getElementById("studentUsername");
+    studentUsernameElement.textContent = ''; 
+    spanElements.forEach(span => {
+        studentUsernameElement.appendChild(span);
+    });
+    console.log(studentUsernameElement.innerHTML);
   }
 }
 loadUser();
