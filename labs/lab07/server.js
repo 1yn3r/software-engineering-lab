@@ -3,7 +3,6 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
 const lectureRoutes = require("./routes/lectures");
-const bcrypt = require("bcryptjs");
 
 
 const app = express();
