@@ -5,7 +5,7 @@
 Hệ thống được xây dựng dựa trên cơ sở dữ liệu  với các bảng quản lý user, môn học, bài tập, kỳ thi, tiến độ, chat, forum, và gamification (huy hiệu, bảng xếp hạng).  
 
 ## 👥 Thành viên nhóm  
-- Hoàng Cường - Leader   
+- [Hoàng Cường](https://1yn3r.github.io/)  - Leader   
 - [Nguyễn Thái Tuấn](https://lucksnow.github.io/)  
 - Phùng Anh Lực   
 - [Hoàng Quang Minh](https://minh7709.github.io) 
