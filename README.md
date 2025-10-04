@@ -7,7 +7,7 @@ Hệ thống được xây dựng dựa trên cơ sở dữ liệu  với các b
 ## 👥 Thành viên nhóm  
 - [Hoàng Cường](https://1yn3r.github.io/)  - Leader   
 - [Nguyễn Thái Tuấn](https://lucksnow.github.io/)  
-- Phùng Anh Lực   
+- [Phùng Anh Lực](https://lucksnow.github.io/) 
 - [Hoàng Quang Minh](https://minh7709.github.io) 
 
 ## 📘 Mini App E-Learning
